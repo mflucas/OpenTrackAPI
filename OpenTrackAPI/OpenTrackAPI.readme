@@ -1,0 +1,20 @@
+Java OpenTrack-API application for OpenTrack OTD Release 1.10.1 (2020-01-06)
+Date:12.02.2020
+Author: Lucas Meyer de Freitas, EBP Schweiz AG
+
+1. Packages Info:
+  
+___________________________________________________________________________________________________________________________________________
+aHandleRequests
+
+This package contains the only two classes in which changes are to be made for a specific project. Alternatively it is also possible to
+create a project specific project with the two classes. The two classes are divided into commands to OpenTrack during the simulation, 
+therefore commands that are a reaction based on the OpenTrack message (RequestHandler class) and commands that are to be sent to OpenTrack
+before the start of the simulation (SimulationPrep class)
+___________________________________________________________________________________________________________________________________________
+
+api 
+
+This package contains the main class for this project (Run.java) as well as a Convertor class to convert O 
+
+

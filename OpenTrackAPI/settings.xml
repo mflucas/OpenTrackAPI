@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+          
+  <localRepository>/Users/lmf/.m2/repository</localRepository>
+ 
+  <interactiveMode>true</interactiveMode>
+ 
+  <offline>false</offline>
+ 
+  <pluginGroups>
+    <!-- pluginGroup
+     | Specifies a further group identifier to use for plugin lookup.
+    <pluginGroup>com.your.plugins</pluginGroup>
+    -->
+  </pluginGroups>
+ 
+  <proxies>
+    <!--
+    <proxy>
+      <id>optional</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <username>proxyuser</username>
+      <password>proxypass</password>
+      <host>proxy.host.net</host>
+      <port>80</port>
+      <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
+    </proxy>
+    -->
+  </proxies>
+ 
+  <servers>
+    <!--
+    <server>
+      <id>deploymentRepo</id>
+      <username>crunchify</username>
+      <password>crunchify</password>
+    </server>
+ 	-->
+  </servers>
+ 
+  <mirrors>
+    <!--
+    <mirror>
+      <id>mirrorId</id>
+      <mirrorOf>repositoryId</mirrorOf>
+      <name>mirror description</name>
+      <url>http://my.repository.com/repo/path</url> 
+    </mirror>
+    -->
+  </mirrors>
+ 
+  <profiles>
+  </profiles>
+ 
+</settings>
