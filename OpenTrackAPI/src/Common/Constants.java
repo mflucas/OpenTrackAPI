@@ -9,6 +9,9 @@ import java.util.List;
  */
 public abstract class Constants {
 	
+	//IS "Keep open" marked in the OTD-Settings in OT?
+	public static final boolean KEEP_CONNECTION_OPEN = true;
+	
 	//RUN FROM BATCH FILE?
 	public static final boolean RUN_FROM_BATCHFILE = false;
 	
@@ -23,14 +26,14 @@ public abstract class Constants {
 	public static final int OpenTrack_PORT = 9002;
 
 	//DEFINE SIM START AND END TIMES
-	public static final int SIM_START_TIME = 36000;//10:00
-	public static final int SIM_END_TIME = 79200;//22:00
+	public static final int SIM_START_TIME = 7*3600;//8:00
+	public static final int SIM_END_TIME = 18*3600;//10:00
 	
 	//DEFINE DELAY SCENARIO
 	public static final int DELAY_SCENARIO = 1;
 	
 	//ACTIVATE DISPATCHING FROM API?`
-	public static final boolean DISPATCHING_ON=true;
+	public static final boolean DISPATCHING_ON=false;
 
 	
 	//COURSES FOR RULE #1 (IC2 and IC21 from GD to BEL)

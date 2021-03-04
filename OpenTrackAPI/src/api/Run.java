@@ -16,6 +16,10 @@ public class Run {
 		}
 
 		// Start server and start simulation
-		Server.otServer();
+		if (Constants.KEEP_CONNECTION_OPEN) {
+			ServerAlwaysOpen.otServer();
+		} else {
+			Server.otServer();
+		}
 	}
 }

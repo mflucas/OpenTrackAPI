@@ -10,7 +10,6 @@ import java.net.Socket;
 import javax.xml.stream.XMLInputFactory;
 import Common.*;
 import apiStreckeTest.*;
-//import aGotthardTests.*; //Change here the name of the package for the projects. Names of classes in the package should remain the same
 //import aHandleRequestsTeststrecke.*; //Change here the name of the package for the projects. Names of classes in the package should remain the same
 import oTDtoOpenTrack.SimController;
 import utilsOTtoJava.OpenTrack;
@@ -21,7 +20,7 @@ import utilsOTtoJava.OpenTrack;
  * OpenTrack already needs to be running for this class to work. 
  * @author Lucas Meyer de Freitas, EBP
  */
-public class Server {
+public class ServerAlwaysOpen {
 	static Socket socket;
 	static XMLInputFactory inputFactory = XMLInputFactory.newInstance();
 
@@ -29,7 +28,7 @@ public class Server {
 
 		// Initialize variables
 		RequestHandler handleRequest= new RequestHandler();
-		Convertor convertor = new Convertor();
+		ConvertorAlwaysOpen convertor = new ConvertorAlwaysOpen();
 		SimulationPrep.prepareSimulation();
 		SimController start = new SimController();
 		
@@ -59,19 +58,53 @@ public class Server {
 				InputStreamReader isr = new InputStreamReader(is);
 				BufferedReader br = new BufferedReader(isr);
 				String inputLine;
+				boolean appendingOn = false;
 				StringBuffer response = new StringBuffer();
+
+
 				while ((inputLine = br.readLine()) != null) {
-					response.append(inputLine);
+					
+					if(inputLine.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")) {
+						appendingOn=true;
+					} else if(inputLine.contains("</SOAP-ENV:Envelope>")){
+						appendingOn=false;
+						response.append("</SOAP-ENV:Envelope>");
+						String xmlPart = response.toString();	
+						System.out.println(xmlPart);
+						OpenTrack o = convertor.convertFromSOAP(xmlPart);
+						handleRequest.responseBased(o);
+						response.delete(0, response.length());
+					}
+
+					if(appendingOn) {
+						response.append(inputLine);
+					}				
+					
 				}
-				System.out.println(response.toString());
+
 				
-				// Transform the message from OpenTrack in a java object and pass it to the
-				// Handler class
-				// The handler class manages what is done with the object
-				// Each project with the API has its own package and class
-				OpenTrack o = convertor.convertFromSOAP(response.toString());
-				
-				handleRequest.responseBased(o);
+//				if(inputLine =="<?xml version=\"1.0\" encoding=\"UTF-8\"?>") {
+//				
+//					System.out.println("GOT HERE");
+//
+//				while (inputLine != "</SOAP-ENV:Envelope>") {
+//					response.append(inputLine);
+//		
+//				}
+//				
+//				int index = response.toString().indexOf("<", 0);
+//				String xmlPart = response.toString().substring(index);	
+//				
+//				System.out.println(xmlPart);
+//				
+//				// Transform the message from OpenTrack in a java object and pass it to the
+//				// Handler class
+//				// The handler class manages what is done with the object
+//				// Each project with the API has its own package and class
+//				OpenTrack o = convertor.convertFromSOAP(xmlPart);
+//				handleRequest.responseBased(o);
+//			
+//				}
 			}
 
 		} catch (Exception e) {

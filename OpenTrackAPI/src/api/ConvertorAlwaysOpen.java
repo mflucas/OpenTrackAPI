@@ -25,21 +25,18 @@ import utilsOTtoJava.OpenTrackObject;
  * For the unmarshaller to work a case must be defined in the switch in this class.
  * @author Lucas Meyer de Freitas, EBP
  */
-public class Convertor {
+public class ConvertorAlwaysOpen {
 
 	OpenTrack convertFromSOAP(String xmlPart) throws IOException, SOAPException, JAXBException {
 
 		try {
-		String soapPart = otXML(xmlPart);
-		System.out.println("SOAP PART START");
-		System.out.println(soapPart);
-		System.out.println("SOAP PART END");
-
+			
+			String soapPart = xmlPart;
 
 		
 		//Print SOAP Message
-		int index = soapPart.indexOf("Body", 0);
-		System.out.println(soapPart.substring(index+6));
+//		int index = soapPart.indexOf("Body", 0);
+//	System.out.println(soapPart.substring(index+6));
 		SOAPMessage message = MessageFactory.newInstance().createMessage(null,
 				new ByteArrayInputStream(soapPart.getBytes()));
 		JAXBContext jaxbContext;
