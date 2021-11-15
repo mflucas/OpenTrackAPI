@@ -8,6 +8,8 @@ to the client implemented in OpenTrack at the time of writing. For an overview o
 ## Structure of the classes
 The structure of the available classes is given in the overview below: 
 
+Red classes should not be changed 
+
 ![ImageInfo](https://github.com/mflucas/OpenTrackAPI/blob/master/Images/Structure.PNG)
 
 ###
