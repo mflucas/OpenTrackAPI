@@ -8,7 +8,7 @@ import utilsOTtoJava.OpenTrackObject;
  * @author Lucas Meyer de Freitas, EBP
  */
 @XmlRootElement (name= "trainDeparture")
-public class TrainDeparture extends OpenTrackObject {
+public final class TrainDeparture extends OpenTrackObject {
 	
 	private String routeID;
 	private String stationID;
